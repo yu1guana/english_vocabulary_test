@@ -1,0 +1,20 @@
+[package]
+name = "english_vocabulary_test"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+anyhow = "1.0"
+clap = {version = "3.1", features = ["derive"]}
+clap_complete = "3.1"
+derive-new = "0.5"
+getset = "0.1"
+itertools="0.10"
+rand = {version = "0.8", features = ["alloc"]}
+serde="1.0"
+serde_derive = "1.0"
+thiserror = "1.0"
+toml = "0.5"
