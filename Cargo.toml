@@ -3,6 +3,7 @@ name = "english_vocabulary_test"
 version = "0.1.0"
 edition = "2021"
 publish = false
+default-run = "english_vocabulary_test"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
