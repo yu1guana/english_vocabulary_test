@@ -29,7 +29,12 @@ impl ExamMaker {
         }
         let file_stem = card_file.file_stem().unwrap().to_str().unwrap();
         Ok(Self {
-            work_dir: card_file.parent().unwrap().to_path_buf(),
+            work_dir: card_file
+                .canonicalize()
+                .unwrap()
+                .parent()
+                .unwrap()
+                .to_path_buf(),
             exam_tex_file_name: format!("exam_of_{}.tex", file_stem),
         })
     }
