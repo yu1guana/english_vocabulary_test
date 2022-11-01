@@ -78,7 +78,10 @@ impl ExamMaker {
         .unwrap();
         writeln!(tex_string, "{}", r#"\begin{document}"#).unwrap();
         writeln!(tex_string, "{}", r#"\begin{enumerate}"#).unwrap();
-        for card in card_list.card().choose_multiple(rng, num_problem) {
+        let mut random_card_list_according_to_priority =
+            card_list.pick_up_cards_randomly_according_to_priority(num_problem, rng);
+        random_card_list_according_to_priority.shuffle(rng);
+        for card in random_card_list_according_to_priority {
             writeln!(tex_string, "  {}", r#"\item"#).unwrap();
             writeln!(tex_string, "    {}", card.to_tex_string()).unwrap();
         }

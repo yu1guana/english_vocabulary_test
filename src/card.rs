@@ -2,7 +2,8 @@
 
 use anyhow::{Context, Result};
 use derive_new::new;
-use getset::Getters;
+use getset::{CopyGetters, Getters};
+use rand::Rng;
 use serde_derive::{Deserialize, Serialize};
 use std::fmt::Write as _;
 use std::fs;
@@ -14,8 +15,9 @@ pub(crate) struct CardList {
     card: Vec<Card>,
 }
 
-#[derive(Clone, Default, Debug, Deserialize, Serialize)]
+#[derive(Clone, CopyGetters, Default, Debug, Deserialize, Serialize)]
 pub(crate) struct Card {
+    #[getset(get_copy = "pub(crate)")]
     priority: u64,
     page: u64,
     id: u64,
@@ -34,6 +36,32 @@ impl CardList {
             .with_context(|| format!("failed to read {}", file.display()))?;
         toml::from_str(&file_contents)
             .with_context(|| format!("failed to parse {}", file.display()))
+    }
+    pub(crate) fn pick_up_cards_randomly_according_to_priority<R: Rng + ?Sized>(
+        &self,
+        num_problem: usize,
+        rng: &mut R,
+    ) -> Vec<Card> {
+        let mut priority_list = self
+            .card
+            .iter()
+            .map(|c| c.priority() as i64 + 1)
+            .collect::<Vec<_>>();
+        let mut sum_of_priority: i64 = priority_list.iter().sum();
+        let mut ret = Vec::with_capacity(num_problem);
+        for _ in 0..num_problem {
+            let mut r = rng.gen_range(0..sum_of_priority);
+            for (priority, card) in priority_list.iter_mut().zip(self.card.iter()) {
+                r -= *priority;
+                if r < 0 {
+                    ret.push(card.clone());
+                    sum_of_priority -= *priority;
+                    *priority = 0;
+                    break;
+                }
+            }
+        }
+        ret
     }
 }
 
