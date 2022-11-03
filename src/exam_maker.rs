@@ -87,7 +87,7 @@ impl ExamMaker {
         writeln!(
             tex_string,
             "{}",
-            r#"\usepackage[top=1.5truecm,bottom=1.5truecm]{geometry}"#
+            r#"\usepackage[top=4truecm,bottom=2truecm,left=2truecm,right=2truecm]{geometry}"#
         )
         .unwrap();
         writeln!(tex_string, "{}", r#"\pagestyle{empty}"#).unwrap();
