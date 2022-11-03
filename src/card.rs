@@ -37,6 +37,7 @@ impl CardList {
         toml::from_str(&file_contents)
             .with_context(|| format!("failed to parse {}", file.display()))
     }
+
     pub(crate) fn pick_up_cards_randomly_according_to_priority<R: Rng + ?Sized>(
         &self,
         num_problem: usize,

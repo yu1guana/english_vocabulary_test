@@ -38,6 +38,7 @@ impl ExamMaker {
             exam_tex_file_name: format!("exam_of_{}.tex", file_stem),
         })
     }
+
     pub(crate) fn make_exam_tex_file<R: Rng + ?Sized>(
         &self,
         card_list: &CardList,
@@ -55,6 +56,7 @@ impl ExamMaker {
         env::set_current_dir(pwd_dir)?;
         Ok(())
     }
+
     pub(crate) fn make_exam_pdf_file(&self) -> Result<()> {
         let pwd_dir = env::current_dir()?;
         env::set_current_dir(&self.work_dir)?;
@@ -68,6 +70,7 @@ impl ExamMaker {
         env::set_current_dir(pwd_dir)?;
         Ok(())
     }
+
     fn make_exam_tex_string<R: Rng + ?Sized>(
         &self,
         card_list: &CardList,
@@ -81,19 +84,40 @@ impl ExamMaker {
             r#"\documentclass[a4paper,11pt]{jsarticle}"#
         )
         .unwrap();
+        writeln!(
+            tex_string,
+            "{}",
+            r#"\usepackage[top=1.5truecm,bottom=1.5truecm]{geometry}"#
+        )
+        .unwrap();
+        writeln!(tex_string, "{}", r#"\pagestyle{empty}"#).unwrap();
+        writeln!(
+            tex_string,
+            "{}",
+            r#"\renewcommand{\labelenumi}{(\arabic{enumi})}"#
+        )
+        .unwrap();
         writeln!(tex_string, "{}", r#"\begin{document}"#).unwrap();
         writeln!(tex_string, "{}", r#"\begin{enumerate}"#).unwrap();
+        writeln!(tex_string, "{}", r#"  \setlength{\itemsep}{2truecm}"#).unwrap();
         let mut random_card_list_according_to_priority =
             card_list.pick_up_cards_randomly_according_to_priority(num_problem, rng);
         random_card_list_according_to_priority.shuffle(rng);
-        for card in random_card_list_according_to_priority {
+        for (i, card) in random_card_list_according_to_priority
+            .into_iter()
+            .enumerate()
+        {
             writeln!(tex_string, "  {}", r#"\item"#).unwrap();
             writeln!(tex_string, "    {}", card.to_tex_string()).unwrap();
+            if (i + 1) % 10 == 0 {
+                writeln!(tex_string, r#"  \clearpage"#).unwrap();
+            }
         }
         writeln!(tex_string, "{}", r#"\end{enumerate}"#).unwrap();
         writeln!(tex_string, "{}", r#"\end{document}"#).unwrap();
         tex_string
     }
+
     fn make_latexmk_script(&self) -> Result<()> {
         let make_exam_file = File::create(Self::MAKE_EXAM_FILE_NAME)?;
         let mut buf_writer = BufWriter::new(&make_exam_file);
