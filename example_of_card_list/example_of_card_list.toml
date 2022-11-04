@@ -2,12 +2,14 @@
 id = 1
 page = 1
 priority = 0
+english = "English"
 sentence = "文章"
 
 [[card]]
 id = 1
 page = 1
 priority = 0
+english = "English"
 noun = ["名詞1", "名詞2"]
 verb = ["動詞1", "動詞2"]
 
@@ -15,6 +17,7 @@ verb = ["動詞1", "動詞2"]
 id = 1
 page = 1
 priority = 0
+english = "English"
 phrase = true
 adverb = ["副詞1", "副詞2"]
 
@@ -22,6 +25,7 @@ adverb = ["副詞1", "副詞2"]
 id = 2
 page = 1
 priority = 0
+english = "English"
 phrase = true
 verb = ["動詞1", "動詞2"]
 
@@ -29,12 +33,14 @@ verb = ["動詞1", "動詞2"]
 id = 3
 page = 1
 priority = 0
+english = "English"
 sentence = "文章"
 
 [[card]]
 id = 3
 page = 1
 priority = 0
+english = "English"
 noun = ["名詞1", "名詞2"]
 adjective = ["形容詞1", "形容詞2"]
 verb = ["動詞1", "動詞2"]
@@ -43,4 +49,5 @@ verb = ["動詞1", "動詞2"]
 id = 4
 page = 1
 priority = 0
+english = "English"
 preposition = ["前置詞1", "前置詞2"]

@@ -7,9 +7,12 @@ for f in $@; do
     echo "Error: $f does not exist." 1>&2
     continue
   fi
-  tex_file=$(basename $f | sed "s/\(.*\)\.toml/exam_of_\1.tex/")
+  exam_tex_file=$(basename $f | sed "s/\(.*\)\.toml/exam_of_\1.tex/")
+  answer_tex_file=$(basename $f | sed "s/\(.*\)\.toml/answer_of_\1.tex/")
   cd $(dirname $f)
-  latexmk $tex_file
-  latexmk -c $tex_file
+  latexmk $exam_tex_file
+  latexmk -c $exam_tex_file
+  latexmk $answer_tex_file
+  latexmk -c $answer_tex_file
   cd $NOW_DIR
 done

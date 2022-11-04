@@ -1,6 +1,6 @@
 // Copyright (c) 2022 Yuichi Ishida
 
-use anyhow::Result;
+use anyhow::{Context, Result};
 use clap::{CommandFactory, Parser};
 use clap_complete::{generate, Shell};
 use english_vocabulary_test::activate::Cli;
@@ -28,7 +28,10 @@ fn main() -> Result<()> {
         .join("completion_script")
         .join(concat!(env!("CARGO_PKG_NAME"), "-completion.").to_owned() + &arg.shell.to_string());
 
-    let mut writer = BufWriter::new(File::create(&script_file_path)?);
+    let mut writer = BufWriter::new(
+        File::create(&script_file_path)
+            .with_context(|| format!("failed to create {}", script_file_path.display()))?,
+    );
     generate(arg.shell, &mut app, name, &mut writer);
     println!("Successfully done.");
     println!(

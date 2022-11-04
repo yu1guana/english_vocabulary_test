@@ -2,7 +2,6 @@
 
 use anyhow::{Context, Result};
 use getset::{CopyGetters, Getters};
-use rand::Rng;
 use serde_derive::{Deserialize, Serialize};
 use std::fmt::Write as _;
 use std::fs;
@@ -20,6 +19,7 @@ pub(crate) struct Card {
     priority: u64,
     page: u64,
     id: u64,
+    english: String,
     sentence: Option<String>,
     phrase: Option<bool>,
     noun: Option<Vec<String>>,
@@ -36,37 +36,10 @@ impl CardList {
         toml::from_str(&file_contents)
             .with_context(|| format!("failed to parse {}", file.display()))
     }
-
-    pub(crate) fn pick_up_cards_randomly_according_to_priority<R: Rng + ?Sized>(
-        &self,
-        num_problem: usize,
-        rng: &mut R,
-    ) -> Vec<Card> {
-        let mut priority_list = self
-            .card
-            .iter()
-            .map(|c| c.priority() as i64 + 1)
-            .collect::<Vec<_>>();
-        let mut sum_of_priority: i64 = priority_list.iter().sum();
-        let mut ret = Vec::with_capacity(num_problem);
-        for _ in 0..num_problem {
-            let mut r = rng.gen_range(0..sum_of_priority);
-            for (priority, card) in priority_list.iter_mut().zip(self.card.iter()) {
-                r -= *priority;
-                if r < 0 {
-                    ret.push(card.clone());
-                    sum_of_priority -= *priority;
-                    *priority = 0;
-                    break;
-                }
-            }
-        }
-        ret
-    }
 }
 
 impl Card {
-    pub(crate) fn to_tex_string(&self) -> String {
+    pub(crate) fn exam_tex_string(&self) -> String {
         let mut tex_string = String::new();
         write!(tex_string, "p.{}", self.page).unwrap();
         write!(tex_string, "~\\#{}", self.id).unwrap();
@@ -80,6 +53,14 @@ impl Card {
             write_meaning_list(phrase, &self.adverb, "副詞", &mut tex_string);
             write_meaning_list(phrase, &self.preposition, "前置詞", &mut tex_string);
         }
+        tex_string
+    }
+
+    pub(crate) fn answer_tex_string(&self) -> String {
+        let mut tex_string = String::new();
+        write!(tex_string, "p.{}", self.page).unwrap();
+        write!(tex_string, "~\\#{}", self.id).unwrap();
+        write!(tex_string, " {}", self.english).unwrap();
         tex_string
     }
 }
