@@ -12,7 +12,6 @@ impl Cli {
         let card_list = CardList::read_card_list_from_file(&args.card_file)?;
         let exam_maker = ExamMaker::try_new(&args.card_file)?;
         exam_maker.make_exam_tex_file(&card_list, args.num_problem, &mut rand::thread_rng())?;
-        exam_maker.make_exam_pdf_file()?;
         Ok(())
     }
 }

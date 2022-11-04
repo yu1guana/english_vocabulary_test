@@ -25,14 +25,12 @@ card	card.rs	/^    card: Vec<Card>,$/;"	m	struct:CardList
 card	lib.rs	/^mod card;$/;"	n
 card_file	activate.rs	/^    card_file: PathBuf,$/;"	m	struct:Cli
 exam_maker	lib.rs	/^mod exam_maker;$/;"	n
-exam_tex_file_name	exam_maker.rs	/^    exam_tex_file_name: String,$/;"	m	struct:ExamMaker
+exam_tex_file_name	exam_maker.rs	/^    exam_tex_file_name: PathBuf,$/;"	m	struct:ExamMaker
 id	card.rs	/^    id: u64,$/;"	m	struct:Card
 main	bin/make_completion_script.rs	/^fn main() -> Result<()> {$/;"	f
 main	main.rs	/^fn main() -> Result<()> {$/;"	f
-make_exam_pdf_file	exam_maker.rs	/^    pub(crate) fn make_exam_pdf_file(&self) -> Result<()> {$/;"	P	implementation:ExamMaker
 make_exam_tex_file	exam_maker.rs	/^    pub(crate) fn make_exam_tex_file<R: Rng + ?Sized>($/;"	P	implementation:ExamMaker
 make_exam_tex_string	exam_maker.rs	/^    fn make_exam_tex_string<R: Rng + ?Sized>($/;"	P	implementation:ExamMaker
-make_latexmk_script	exam_maker.rs	/^    fn make_latexmk_script(&self) -> Result<()> {$/;"	P	implementation:ExamMaker
 noun	card.rs	/^    noun: Option<Vec<String>>,$/;"	m	struct:Card
 num_problem	activate.rs	/^    num_problem: usize,$/;"	m	struct:Cli
 page	card.rs	/^    page: u64,$/;"	m	struct:Card
@@ -44,7 +42,6 @@ read_card_list_from_file	card.rs	/^    pub(crate) fn read_card_list_from_file(fi
 run	activate.rs	/^    pub fn run() -> Result<()> {$/;"	P	implementation:Cli
 sentence	card.rs	/^    sentence: Option<String>,$/;"	m	struct:Card
 shell	bin/make_completion_script.rs	/^    shell: Shell,$/;"	m	struct:AppArg
-str	exam_maker.rs	/^    const MAKE_EXAM_FILE_NAME: &'static str = "\/tmp\/make_exam.sh";$/;"	v	implementation:ExamMaker
 tag	card.rs	/^fn tag(phrase: bool, name: &str) -> String {$/;"	f
 to_tex_string	card.rs	/^    pub(crate) fn to_tex_string(&self) -> String {$/;"	P	implementation:Card
 try_new	exam_maker.rs	/^    pub(crate) fn try_new(card_file: &Path) -> Result<Self> {$/;"	P	implementation:ExamMaker

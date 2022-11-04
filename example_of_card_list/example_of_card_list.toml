@@ -1,0 +1,46 @@
+[[card]]
+id = 1
+page = 1
+priority = 0
+sentence = "文章"
+
+[[card]]
+id = 1
+page = 1
+priority = 0
+noun = ["名詞1", "名詞2"]
+verb = ["動詞1", "動詞2"]
+
+[[card]]
+id = 1
+page = 1
+priority = 0
+phrase = true
+adverb = ["副詞1", "副詞2"]
+
+[[card]]
+id = 2
+page = 1
+priority = 0
+phrase = true
+verb = ["動詞1", "動詞2"]
+
+[[card]]
+id = 3
+page = 1
+priority = 0
+sentence = "文章"
+
+[[card]]
+id = 3
+page = 1
+priority = 0
+noun = ["名詞1", "名詞2"]
+adjective = ["形容詞1", "形容詞2"]
+verb = ["動詞1", "動詞2"]
+
+[[card]]
+id = 4
+page = 1
+priority = 0
+preposition = ["前置詞1", "前置詞2"]

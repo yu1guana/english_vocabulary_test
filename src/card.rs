@@ -1,7 +1,6 @@
 // Copyright (c) 2022 Yuichi Ishida
 
 use anyhow::{Context, Result};
-use derive_new::new;
 use getset::{CopyGetters, Getters};
 use rand::Rng;
 use serde_derive::{Deserialize, Serialize};
@@ -9,7 +8,7 @@ use std::fmt::Write as _;
 use std::fs;
 use std::path::Path;
 
-#[derive(Clone, Default, Debug, Deserialize, Getters, new, Serialize)]
+#[derive(Clone, Default, Debug, Deserialize, Getters, Serialize)]
 #[getset(get = "pub(crate)")]
 pub(crate) struct CardList {
     card: Vec<Card>,
