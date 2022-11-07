@@ -16,7 +16,7 @@ pub(crate) struct CardList {
 #[derive(Clone, CopyGetters, Default, Debug, Deserialize, Serialize)]
 pub(crate) struct Card {
     #[getset(get_copy = "pub(crate)")]
-    priority: u64,
+    priority: i64,
     page: u64,
     id: u64,
     english: String,

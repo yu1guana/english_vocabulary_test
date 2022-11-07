@@ -27,13 +27,20 @@ impl Book {
         max_num_problem: usize,
         rng: &mut R,
     ) -> Vec<Card> {
+        let priority_offset = 1 - self
+            .card_list
+            .card()
+            .iter()
+            .map(|c| c.priority())
+            .min()
+            .unwrap();
         let mut priority_list = self
             .card_list
             .card()
             .iter()
-            .map(|c| c.priority() as i64 + 1)
+            .map(|c| c.priority() + priority_offset)
             .collect::<Vec<_>>();
-        let mut sum_of_priority: i64 = priority_list.iter().sum();
+        let mut sum_of_priority = priority_list.iter().sum();
         let mut ret = Vec::with_capacity(max_num_problem);
         for _ in 0..max_num_problem {
             if sum_of_priority <= 0 {
