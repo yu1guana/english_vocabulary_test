@@ -79,3 +79,8 @@ preposition = ["前置詞1", "前置詞2"]
 ## 余談
 
 cron とlpr コマンドを利用すれば毎日単語テストがプリンタから出てくる環境が構築できる。
+
+## License
+Copyright (c) 2023 Yuichi Ishida
+Released under the MIT license
+[https://opensource.org/licenses/mit-license.php](https://opensource.org/licenses/mit-license.php)
