@@ -6,7 +6,7 @@
 use anyhow::{Context, Result};
 use clap::{CommandFactory, Parser};
 use clap_complete::{generate, Shell};
-use english_vocabulary_test::activate::Cli;
+use english_vocabulary_test::cli::Cli;
 use std::fs::File;
 use std::io::BufWriter;
 use std::path::Path;
@@ -19,7 +19,6 @@ use std::path::Path;
     about = "Make shellscript to complete arguments of english_vocabulary_test."
     )]
 struct AppArg {
-    #[clap(arg_enum)]
     shell: Shell,
 }
 

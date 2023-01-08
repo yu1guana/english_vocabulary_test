@@ -1,19 +1,29 @@
 [package]
 name = "english_vocabulary_test"
+authors = ["Yuichi Ishida <yu1guana@gmail.com>"]
 version = "0.1.0"
+description = "英単語テスト作成プログラム。TOMLファイルを読み込みLaTeXファイルを作成する。"
+repository = "https://github.com/yu1guana/english_vocabulary_test"
+license-file = "LICENSE"
+readme = "README.md"
 edition = "2021"
 publish = false
 default-run = "english_vocabulary_test"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[profile.release]
+lto = true
+panic = 'abort'
+codegen-units = 1
+
 [dependencies]
-anyhow = "1.0"
-clap = {version = "3.1", features = ["derive"]}
-clap_complete = "3.1"
-getset = "0.1"
-itertools="0.10"
-rand = "0.8"
-serde="1.0"
-serde_derive = "1.0"
-toml = "0.5"
+anyhow = "1.0.68"
+clap = {version = "4.0.32", features = ["derive"]}
+clap_complete = "4.0.7"
+getset = "0.1.2"
+itertools="0.10.5"
+rand = "0.8.5"
+serde="1.0.152"
+serde_derive = "1.0.152"
+toml = "0.5.10"

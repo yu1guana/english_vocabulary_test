@@ -10,12 +10,7 @@ use clap::{Parser, ValueHint};
 use std::path::PathBuf;
 
 #[derive(Parser)]
-#[clap(
-    name = env!("CARGO_PKG_NAME"),
-    author = env!("CARGO_PKG_AUTHORS"),
-    version = env!("CARGO_PKG_VERSION"),
-    about = "英単語テスト作成"
-)]
+#[clap(author, version, about, after_help = concat!("Repository: ", env!("CARGO_PKG_REPOSITORY")))]
 pub struct Cli {
     #[clap(value_hint(ValueHint::FilePath))]
     card_file: PathBuf,

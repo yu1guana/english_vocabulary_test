@@ -2,6 +2,11 @@
 
 readonly NOW_DIR=$(pwd)
 
+if [ $# -eq 0 ]; then
+  echo "Error: arguments are necessary." 1>&2
+  exit 1
+fi
+
 for f in $@; do
   if [ ! -f $f ]; then
     echo "Error: $f does not exist." 1>&2

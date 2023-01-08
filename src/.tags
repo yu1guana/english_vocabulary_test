@@ -16,11 +16,10 @@ Card	card.rs	/^impl Card {$/;"	c
 Card	card.rs	/^pub(crate) struct Card {$/;"	s
 CardList	card.rs	/^impl CardList {$/;"	c
 CardList	card.rs	/^pub(crate) struct CardList {$/;"	s
-Cli	activate.rs	/^impl Cli {$/;"	c
-Cli	activate.rs	/^pub struct Cli {$/;"	s
+Cli	cli.rs	/^impl Cli {$/;"	c
+Cli	cli.rs	/^pub struct Cli {$/;"	s
 ExamMaker	exam_maker.rs	/^impl ExamMaker {$/;"	c
 ExamMaker	exam_maker.rs	/^pub struct ExamMaker {$/;"	s
-activate	lib.rs	/^pub mod activate;$/;"	n
 adjective	card.rs	/^    adjective: Option<Vec<String>>,$/;"	m	struct:Card
 adverb	card.rs	/^    adverb: Option<Vec<String>>,$/;"	m	struct:Card
 answer_tex_file	exam_maker.rs	/^    answer_tex_file: PathBuf,$/;"	m	struct:ExamMaker
@@ -29,9 +28,10 @@ book	exam_maker.rs	/^    book: Book,$/;"	m	struct:ExamMaker
 book	lib.rs	/^mod book;$/;"	n
 card	card.rs	/^    card: Vec<Card>,$/;"	m	struct:CardList
 card	lib.rs	/^mod card;$/;"	n
-card_file	activate.rs	/^    card_file: PathBuf,$/;"	m	struct:Cli
 card_file	book.rs	/^    card_file: PathBuf,$/;"	m	struct:Book
+card_file	cli.rs	/^    card_file: PathBuf,$/;"	m	struct:Cli
 card_list	book.rs	/^    card_list: CardList,$/;"	m	struct:Book
+cli	lib.rs	/^pub mod cli;$/;"	n
 english	card.rs	/^    english: String,$/;"	m	struct:Card
 exam_maker	lib.rs	/^mod exam_maker;$/;"	n
 exam_tex_file	exam_maker.rs	/^    exam_tex_file: PathBuf,$/;"	m	struct:ExamMaker
@@ -42,14 +42,14 @@ main	main.rs	/^fn main() -> Result<()> {$/;"	f
 make_tex_string	exam_maker.rs	/^fn make_tex_string(card_list: &[Card], flag_exam: bool) -> String {$/;"	f
 new	exam_maker.rs	/^    pub(crate) fn new(book: Book) -> Self {$/;"	P	implementation:ExamMaker
 noun	card.rs	/^    noun: Option<Vec<String>>,$/;"	m	struct:Card
-num_problem	activate.rs	/^    num_problem: usize,$/;"	m	struct:Cli
+num_problem	cli.rs	/^    num_problem: usize,$/;"	m	struct:Cli
 page	card.rs	/^    page: u64,$/;"	m	struct:Card
 phrase	card.rs	/^    phrase: Option<bool>,$/;"	m	struct:Card
 pick_up_card_list_randomly_according_to_priority	book.rs	/^    pub(crate) fn pick_up_card_list_randomly_according_to_priority<R: Rng + ?Sized>($/;"	P	implementation:Book
 preposition	card.rs	/^    preposition: Option<Vec<String>>,$/;"	m	struct:Card
 priority	card.rs	/^    priority: i64,$/;"	m	struct:Card
 read_card_list_from_file	card.rs	/^    pub(crate) fn read_card_list_from_file(file: &Path) -> Result<Self> {$/;"	P	implementation:CardList
-run	activate.rs	/^    pub fn run() -> Result<()> {$/;"	P	implementation:Cli
+run	cli.rs	/^    pub fn run() -> Result<()> {$/;"	P	implementation:Cli
 sentence	card.rs	/^    sentence: Option<String>,$/;"	m	struct:Card
 shell	bin/make_completion_script.rs	/^    shell: Shell,$/;"	m	struct:AppArg
 tag	card.rs	/^fn tag(phrase: bool, name: &str) -> String {$/;"	f
