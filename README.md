@@ -38,6 +38,10 @@ OPTIONS:
 LaTeXファイルを作成した後に[script/make\_exam\_pdf.sh](script/make_exam_pdf.sh)にカードファイルを引数として渡して実行することで
 PDFファイルが作成される（内部でlatexmkを使用する）。
 
+## 補完スクリプトの作成
+
+`make_completion_script.sh`を実行してください。[completion\_script](completion_script)に補完スクリプトが生成されます。
+
 ## カードファイルの書き方
 
 下記のように`[[card]]`に続けて情報を記入していく。
