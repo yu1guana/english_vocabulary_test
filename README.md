@@ -17,20 +17,16 @@ bash がない環境では[このサイト](https://doc.rust-lang.org/cargo/comm
 ## 使い方
 
 ```sh
-english_vocabulary_test 0.1.0
-
-英単語テスト作成
-
 USAGE:
-    english_vocabulary_test <CARD_FILE> <NUM_PROBLEM>
+  english_vocabulary_test <CARD_FILE> <NUM_PROBLEM>
 
 ARGS:
-    <CARD_FILE>
-    <NUM_PROBLEM>
+  <CARD_FILE>
+  <NUM_PROBLEM>
 
 OPTIONS:
-    -h, --help       Print help information
-    -V, --version    Print version information
+  -h, --help       Print help information
+  -V, --version    Print version information
 ```
 
 ## 補助スクリプト
