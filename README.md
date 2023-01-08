@@ -16,7 +16,7 @@ bash がない環境では[このサイト](https://doc.rust-lang.org/cargo/comm
 
 ## 使い方
 
-```sh
+```
 USAGE:
   english_vocabulary_test <CARD_FILE> <NUM_PROBLEM>
 
@@ -81,6 +81,6 @@ preposition = ["前置詞1", "前置詞2"]
 cron とlpr コマンドを利用すれば毎日単語テストがプリンタから出てくる環境が構築できる。
 
 ## License
-Copyright (c) 2023 Yuichi Ishida
-Released under the MIT license
+Copyright (c) 2023 Yuichi Ishida  
+Released under the MIT license  
 [https://opensource.org/licenses/mit-license.php](https://opensource.org/licenses/mit-license.php)
