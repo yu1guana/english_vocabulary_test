@@ -84,3 +84,5 @@ cron とlpr コマンドを利用すれば毎日単語テストがプリンタ�
 Copyright (c) 2023 Yuichi Ishida  
 Released under the MIT license  
 [https://opensource.org/licenses/mit-license.php](https://opensource.org/licenses/mit-license.php)
+
+# commit test
