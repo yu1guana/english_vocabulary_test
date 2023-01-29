@@ -96,30 +96,23 @@ fn write_tex_file(
 
 fn make_tex_string(card_list: &[Card], flag_exam: bool) -> String {
     let mut tex_string = String::new();
+    writeln!(tex_string, "\\documentclass[a4paper,11pt]{{jsarticle}}").unwrap();
     writeln!(
         tex_string,
-        "{}",
-        r#"\documentclass[a4paper,11pt]{jsarticle}"#
+        "\\usepackage[top=4truecm,bottom=2truecm,left=2truecm,right=2truecm]{{geometry}}"
     )
     .unwrap();
+    writeln!(tex_string, "\\pagestyle{{empty}}").unwrap();
     writeln!(
         tex_string,
-        "{}",
-        r#"\usepackage[top=4truecm,bottom=2truecm,left=2truecm,right=2truecm]{geometry}"#
+        "\\renewcommand{{\\labelenumi}}{{(\\arabic{{enumi}})}}"
     )
     .unwrap();
-    writeln!(tex_string, "{}", r#"\pagestyle{empty}"#).unwrap();
-    writeln!(
-        tex_string,
-        "{}",
-        r#"\renewcommand{\labelenumi}{(\arabic{enumi})}"#
-    )
-    .unwrap();
-    writeln!(tex_string, "{}", r#"\begin{document}"#).unwrap();
-    writeln!(tex_string, "{}", r#"\begin{enumerate}"#).unwrap();
-    writeln!(tex_string, "{}", r#"  \setlength{\itemsep}{2truecm}"#).unwrap();
+    writeln!(tex_string, "\\begin{{document}}").unwrap();
+    writeln!(tex_string, "\\begin{{enumerate}}").unwrap();
+    writeln!(tex_string, "  \\setlength{{\\itemsep}}{{2truecm}}").unwrap();
     for (i, card) in card_list.iter().enumerate() {
-        writeln!(tex_string, "  {}", r#"\item"#).unwrap();
+        writeln!(tex_string, "  \\item").unwrap();
         writeln!(
             tex_string,
             "    {}",
@@ -131,10 +124,10 @@ fn make_tex_string(card_list: &[Card], flag_exam: bool) -> String {
         )
         .unwrap();
         if (i + 1) % 10 == 0 {
-            writeln!(tex_string, r#"  \clearpage"#).unwrap();
+            writeln!(tex_string, "  \\clearpage").unwrap();
         }
     }
-    writeln!(tex_string, "{}", r#"\end{enumerate}"#).unwrap();
-    writeln!(tex_string, "{}", r#"\end{document}"#).unwrap();
+    writeln!(tex_string, "\\end{{enumerate}}").unwrap();
+    writeln!(tex_string, "\\end{{document}}").unwrap();
     tex_string
 }
