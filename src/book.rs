@@ -3,6 +3,8 @@
 // Released under the MIT license.
 // see https://opensource.org/licenses/mit-license.php
 
+//! 単語カードリストとそのデータファイル。
+
 use crate::card::{Card, CardList};
 use anyhow::Result;
 use getset::Getters;
@@ -10,6 +12,7 @@ use rand::seq::SliceRandom;
 use rand::Rng;
 use std::path::{Path, PathBuf};
 
+/// 単語カードリストとそのデータファイル。
 #[derive(Clone, Default, Debug, Getters)]
 pub(crate) struct Book {
     #[getset(get = "pub(crate)")]
@@ -25,6 +28,9 @@ impl Book {
         })
     }
 
+    /// 単語カードリストから重要度に従って単語カードを抽出する。
+    ///
+    /// 重要度の最低値が1となるようにオフセットを足したあと、重要度の比が確率の比となるように抽出する。
     pub(crate) fn pick_up_card_list_randomly_according_to_priority<R: Rng + ?Sized>(
         &self,
         max_num_problem: usize,

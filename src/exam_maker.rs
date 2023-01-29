@@ -3,6 +3,8 @@
 // Released under the MIT license.
 // see https://opensource.org/licenses/mit-license.php
 
+//! 試験問題の作成。
+
 use crate::book::Book;
 use crate::card::Card;
 use anyhow::{Context, Result};
@@ -14,6 +16,9 @@ use std::io::{BufWriter, Write};
 use std::path::Path;
 use std::path::PathBuf;
 
+/// 単語カードリストから試験問題と解答を作成する。
+///
+/// 問題と解答はカードファイルがあるディレクトリに出力される。
 #[derive(Clone, Debug)]
 pub struct ExamMaker {
     book: Book,
@@ -47,6 +52,7 @@ impl ExamMaker {
         }
     }
 
+    /// 試験問題と解答をtexファイルに出力。
     pub(crate) fn write_tex_file<R: Rng + ?Sized>(
         &self,
         num_problem: usize,
@@ -66,6 +72,10 @@ impl ExamMaker {
     }
 }
 
+/// 試験問題もしくは解答をtexファイルに出力。
+///
+/// # Arguments
+/// - `flag_exam`: 試験問題の場合は`true`を指定。
 fn write_tex_file(
     work_dir: &Path,
     tex_file: &Path,
@@ -94,6 +104,7 @@ fn write_tex_file(
     Ok(())
 }
 
+/// texファイルに出力するための文字列を作成。
 fn make_tex_string(card_list: &[Card], flag_exam: bool) -> String {
     let mut tex_string = String::new();
     writeln!(tex_string, "\\documentclass[a4paper,11pt]{{jsarticle}}").unwrap();

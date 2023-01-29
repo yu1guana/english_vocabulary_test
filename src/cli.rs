@@ -3,6 +3,8 @@
 // Released under the MIT license.
 // see https://opensource.org/licenses/mit-license.php
 
+//! Command line interface.
+
 use crate::book::Book;
 use crate::exam_maker::ExamMaker;
 use anyhow::Result;

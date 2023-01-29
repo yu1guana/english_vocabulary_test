@@ -16,6 +16,7 @@ default-run = "english_vocabulary_test"
 lto = true
 panic = 'abort'
 codegen-units = 1
+strip = true
 
 [dependencies]
 anyhow = "1.0"
