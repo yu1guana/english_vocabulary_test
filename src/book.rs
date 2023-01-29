@@ -21,10 +21,15 @@ pub(crate) struct Book {
 }
 
 impl Book {
+    /// コンストラクタ。
+    ///
+    /// 空のカードは含まないようにする。
     pub(crate) fn try_new(file: &Path) -> Result<Self> {
+        let mut card_list = CardList::read_card_list_from_file(file)?;
+        card_list.drop_empty_card();
         Ok(Self {
             card_file: file.to_path_buf(),
-            card_list: CardList::read_card_list_from_file(file)?,
+            card_list,
         })
     }
 

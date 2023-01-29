@@ -25,24 +25,34 @@ pub(crate) struct Card {
     /// この値が大きいほど試験作成の際に選ばれやすいようにする。
     #[getset(get_copy = "pub(crate)")]
     priority: i64,
+
     /// 単語帳におけるページ番号。
     page: u64,
+
     /// 単語帳における単語番号。
     id: u64,
+
     /// 問題文となる英語。
     english: String,
+
     /// 解答となる文章。
     sentence: Option<String>,
+
     /// 節かどうかを表すフラグ。
     phrase: Option<bool>,
+
     /// 解答となる名詞。
     noun: Option<Vec<String>>,
+
     /// 解答となる形容詞。
     adjective: Option<Vec<String>>,
+
     /// 解答となる動詞。
     verb: Option<Vec<String>>,
+
     /// 解答となる副詞。
     adverb: Option<Vec<String>>,
+
     /// 解答となる前置詞。
     preposition: Option<Vec<String>>,
 }
@@ -54,6 +64,11 @@ impl CardList {
             .with_context(|| format!("failed to read {}", file.display()))?;
         toml::from_str(&file_contents)
             .with_context(|| format!("failed to parse {}", file.display()))
+    }
+
+    /// カードリストから空のカードを削除する。
+    pub(crate) fn drop_empty_card(&mut self) {
+        self.card.retain(|card| !card.is_empty());
     }
 }
 
@@ -90,6 +105,25 @@ impl Card {
         write!(tex_string, " {}", self.english).unwrap();
         tex_string
     }
+
+    /// 空のカードを判定
+    pub(crate) fn is_empty(&self) -> bool {
+        let mut is_empty = self
+            .sentence
+            .as_ref()
+            .map_or(true, |sentence| sentence.is_empty());
+        is_empty = is_empty
+            && [
+                &self.noun,
+                &self.adjective,
+                &self.verb,
+                &self.adverb,
+                &self.preposition,
+            ]
+            .into_iter()
+            .all(|word| word.as_ref().map_or(true, |word| word.is_empty()));
+        is_empty
+    }
 }
 
 /// 文字列にカードの意味のリストを書き込む。
@@ -99,14 +133,17 @@ fn write_meaning_list(
     name: &str,
     tex_string: &mut String,
 ) {
-    meaning_list.as_ref().map(|meaning| {
-        write!(
-            tex_string,
-            "  {} {}",
-            tag(phrase, name),
-            itertools::join(meaning.iter(), "、")
-        )
-    });
+    if let Some(meaning_list) = meaning_list {
+        if !meaning_list.is_empty() {
+            write!(
+                tex_string,
+                "  {} {}",
+                tag(phrase, name),
+                itertools::join(meaning_list.iter(), "、")
+            )
+            .unwrap()
+        }
+    }
 }
 
 /// 単語ではなく節の場合は品詞の後に「節」を加える。

@@ -3,51 +3,74 @@ id = 1
 page = 1
 priority = 0
 english = "English"
+phrase = false
 sentence = "文章"
-
-[[card]]
-id = 1
-page = 1
-priority = 0
-english = "English"
-noun = ["名詞1", "名詞2"]
-verb = ["動詞1", "動詞2"]
-
-[[card]]
-id = 1
-page = 1
-priority = 0
-english = "English"
-phrase = true
-adverb = ["副詞1", "副詞2"]
+noun = []
+adjective = []
+verb = []
+adverb = []
+preposition = []
 
 [[card]]
 id = 2
 page = 1
 priority = 0
 english = "English"
-phrase = true
-verb = ["動詞1", "動詞2"]
-
-[[card]]
-id = 3
-page = 1
-priority = 0
-english = "English"
-sentence = "文章"
-
-[[card]]
-id = 3
-page = 1
-priority = 0
-english = "English"
+phrase = false
+sentence = ""
 noun = ["名詞1", "名詞2"]
-adjective = ["形容詞1", "形容詞2"]
+adjective = []
 verb = ["動詞1", "動詞2"]
+adverb = []
+preposition = []
+
+[[card]]
+id = 3
+page = 1
+priority = 0
+english = "English"
+phrase = true
+noun = ["名詞1", "名詞2"]
+adjective = []
+verb = ["動詞1", "動詞2"]
+adverb = []
+preposition = []
 
 [[card]]
 id = 4
 page = 1
 priority = 0
 english = "English"
+phrase = true
+sentence = "文章"
+noun = ["名詞1", "名詞2"]
+verb = ["動詞1", "動詞2"]
 preposition = ["前置詞1", "前置詞2"]
+
+[[card]]
+id = 5
+page = 1
+priority = 0
+english = "English"
+phrase = false
+noun = ["名詞1", "名詞2"]
+verb = ["動詞1", "動詞2"]
+
+[[card]]
+id = 6
+page = 1
+priority = 0
+english = "English"
+phrase = false
+sentence = ""
+noun = []
+adjective = []
+verb = []
+adverb = []
+preposition = []
+
+[[card]]
+id = 7
+page = 1
+priority = 0
+english = "English"

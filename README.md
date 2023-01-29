@@ -10,13 +10,15 @@
 
 コンパイルには`cargo`コマンドが必要なので、ない場合は[このページ](https://www.rust-lang.org/ja/tools/install)を参照すること。
 
-bash が動く環境であれば [install.sh](install.sh) を実行すればインストールされる。
-引数でインストール先ディレクトリを指定することも可能（引数がない場合のインストール先は ~/.cargo/bin）。
-bash がない環境では[このサイト](https://doc.rust-lang.org/cargo/commands/cargo-install.html)を参考にすること。
+下記コマンドを実行することでインストールされる（オプションは[このサイト](https://doc.rust-lang.org/cargo/commands/cargo-install.html)を参照）。
+
+```sh
+cargo install --git https://github.com/yu1guana/english_vocabulary_test
+```
 
 ## 使い方
 
-```
+```text
 USAGE:
   english_vocabulary_test <CARD_FILE> <NUM_PROBLEM>
 
